@@ -5,5 +5,12 @@ export const API_PATH = {
   },
   customer: {
     getAll: "/customer/get-all",
+    create: "customer/create",
+  },
+  staff: {
+    getAll: "/staff/get-all",
+  },
+  tag: {
+    getAll: "/tag/get-all",
   },
 };

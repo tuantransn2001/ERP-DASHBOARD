@@ -17,9 +17,6 @@ api.interceptors.request.use(
     if (token) {
       config.headers["content-type"] = "application/json";
       config.headers.Authorization = `${token_type} ${access_token}`;
-      console.log({
-        config,
-      });
     }
 
     return config;

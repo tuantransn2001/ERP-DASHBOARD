@@ -3,10 +3,10 @@ import { ShimmerSimpleGallery } from "react-shimmer-effects";
 const LoadingComponent = () => {
   return (
     <>
-      <ShimmerSimpleGallery imageType="circular" imageHeight={200} caption />
-      <ShimmerSimpleGallery card imageHeight={300} />
-      <ShimmerSimpleGallery card imageHeight={300} caption />
-    </> 
+      <ShimmerSimpleGallery imageType="circular" imageHeight={2} caption />
+      <ShimmerSimpleGallery card imageHeight={3} />
+      <ShimmerSimpleGallery card imageHeight={3} caption />
+    </>
   );
 };
 

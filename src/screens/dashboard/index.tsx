@@ -1,5 +1,7 @@
 import CardBarChart from "src/components/cards/cardBarChart";
 // import CardLineChart from "src/components/cards/cardLineChart";
+
+import HeaderStatus from "src/components/headers";
 import CardPageVisits from "src/components/cards/cardPageVisits";
 import CardSocialTraffic from "src/components/cards/cardSocialTraffic";
 import AdminLayout from "src/layouts/admin";
@@ -7,6 +9,7 @@ import AdminLayout from "src/layouts/admin";
 const DashboardScreen = () => {
   return (
     <AdminLayout>
+      <HeaderStatus />
       <div className="flex flex-wrap">
         <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
           {/* <CardLineChart /> */}

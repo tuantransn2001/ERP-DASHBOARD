@@ -1,8 +1,8 @@
 import plugin from "tailwindcss/plugin";
 import colors from "tailwindcss/colors";
 import tailwindForm from "@tailwindcss/forms";
-import withMT from "@material-tailwind/react/utils/withMT";
-export default withMT({
+
+export default {
   purge: {
     enabled: true,
     content: [
@@ -24,6 +24,9 @@ export default withMT({
     },
   },
   theme: {
+    spacing: {
+      "50px": "50px",
+    },
     colors: {
       ...colors,
       primary: "#333333",
@@ -147,4 +150,4 @@ export default withMT({
       ]);
     }),
   ],
-});
+};

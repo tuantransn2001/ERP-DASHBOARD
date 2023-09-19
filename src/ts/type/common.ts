@@ -23,7 +23,6 @@ export type ISideBarMenu = {
   children?: ISideBarMenu[];
 };
 
-export type ObjectProps = string;
-export type ObjectValues = string;
+export type ObjectLiteral<TValue> = Record<string, TValue>;
 
-export type ObjectLiteral = Record<ObjectProps, ObjectValues>;
+export type SetState<T> = React.Dispatch<React.SetStateAction<T>>;

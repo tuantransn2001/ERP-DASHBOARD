@@ -1,7 +1,7 @@
 import AdminLayout from "src/layouts/admin";
 import { Helmet } from "react-helmet";
 import { useMyQuery } from "src/hooks/useQuery";
-import { getAllCustomer } from "src/apis/customer/customer";
+import { getAllCustomerApi } from "src/apis/customer/customer";
 import { GetAllCustomerPayload } from "src/domain/customer/customer";
 import LoadingComponent from "src/components/helpers/shimmerLoader";
 import CustomerTable from "src/screens/customer/table";
@@ -13,7 +13,7 @@ const CustomerScreen = () => {
   };
   const { data, isLoading, isError, error } = useMyQuery({
     keyGroup: ["customer"],
-    apiCaller: getAllCustomer(getAllCustomerData),
+    apiCaller: getAllCustomerApi(getAllCustomerData),
   });
 
   if (isError) {

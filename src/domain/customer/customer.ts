@@ -14,3 +14,17 @@ export interface ICustomer {
     createdAt: string;
   };
 }
+
+export interface CreateCustomerPayload {
+  id: string;
+  user_name: string;
+  user_code: string;
+  user_phone: string;
+  user_type: string;
+  createdAt: string;
+  CustSupp: {
+    id: string;
+    status: string;
+    createdAt: string;
+  };
+}

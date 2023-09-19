@@ -1,5 +1,6 @@
 import { AxiosError } from "axios";
 import toast from "src/helpers/toast/toast";
+import { ZodError } from "zod";
 import { HttpResponseFail } from "./types";
 
 export const convertServerErrorToString = (
@@ -11,6 +12,12 @@ export const convertServerErrorToString = (
   return `Status code ${axiosError.response?.status}! ${
     serverError ? serverError.error.message : "Server Error"
   }`;
+};
+
+export const convertZodValidateErrorToString = (zodError: ZodError) => {
+  return zodError.issues
+    .map((err) => `${err.path}:: ${err.message}`)
+    .join(" || ");
 };
 
 export const handleToastOnServerError = (
