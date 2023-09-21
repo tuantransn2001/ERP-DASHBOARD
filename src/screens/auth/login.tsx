@@ -1,7 +1,7 @@
 import JWTLogin from "./JWTLogin";
 import github from "Assets/images/common/github.svg";
-import google from "Assets/images/common/google.svg";
 import Auth from "src/layouts/auth";
+import GoogleLogin from "./GoogleLogin";
 
 const Login = () => {
   return (
@@ -24,13 +24,7 @@ const Login = () => {
                     <img alt="..." className="w-5 mr-1" src={github} />
                     Github
                   </button>
-                  <button
-                    className="bg-white active:bg-blueGray-50 text-blueGray-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
-                    type="button"
-                  >
-                    <img alt="..." className="w-5 mr-1" src={google} />
-                    Google
-                  </button>
+                  <GoogleLogin />
                 </div>
                 <hr className="mt-6 border-b-1 border-blueGray-300" />
               </div>

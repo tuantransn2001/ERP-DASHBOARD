@@ -1,8 +1,7 @@
 import axios from "axios";
 import { env } from "src/env/env";
 
-axios.defaults.headers.post["Content-Type"] =
-  "application/x-www-form-urlencoded";
+axios.defaults.headers.post["Content-Type"] = "application/json";
 
 const api = axios.create({
   baseURL: env.baseURL,

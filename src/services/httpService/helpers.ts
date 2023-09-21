@@ -3,10 +3,8 @@ import toast from "src/helpers/toast/toast";
 import { ZodError } from "zod";
 import { HttpResponseFail } from "./types";
 
-export const convertServerErrorToString = (
-  axiosError: AxiosError<HttpResponseFail>
-): string => {
-  const serverError: HttpResponseFail | undefined = axiosError?.response
+export const convertAxiosErrorToString = (axiosError: AxiosError): string => {
+  const serverError = axiosError?.response
     ? (axiosError?.response.data as HttpResponseFail)
     : undefined;
   return `Status code ${axiosError.response?.status}! ${
@@ -21,19 +19,22 @@ export const convertZodValidateErrorToString = (zodError: ZodError) => {
 };
 
 export const handleToastOnServerError = (
-  axiosError: AxiosError<HttpResponseFail>,
-  actionOnFailContent: string,
-  actionOnFailHandler: () => void
+  serverError: ZodError | AxiosError,
+  actionOnFailContent?: string,
+  ...rest: never[]
 ) => {
-  const notify = {};
+  let errMess: string = "";
+  const isAxiosError = serverError instanceof AxiosError;
+  const isZodError = serverError instanceof ZodError;
+
+  if (isAxiosError) errMess = convertAxiosErrorToString(serverError);
+  if (isZodError) errMess = convertZodValidateErrorToString(serverError);
 
   toast.error({
-    title: convertServerErrorToString(axiosError),
+    title: errMess,
     action: {
-      text: actionOnFailContent,
-      onClick: actionOnFailHandler,
+      text: actionOnFailContent ? actionOnFailContent : "Thủ lại",
+      ...rest,
     },
   });
-
-  return notify;
 };

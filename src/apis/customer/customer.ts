@@ -10,3 +10,6 @@ export const getAllCustomerApi = async (payload: GetAllCustomerPayload) =>
 
 export const createCustomerApi = async (payload: CreateCustomerDTO) =>
   await api.post(API_PATH.customer.create, payload);
+
+export const getCustomerByIdApi = async (id: string) =>
+  await api.get(API_PATH.customer.getById + `/${id}`);

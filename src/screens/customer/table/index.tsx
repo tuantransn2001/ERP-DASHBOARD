@@ -39,7 +39,7 @@ const CustomerTable = ({ onlyProps, rows }: Props) => {
         header: "Mã khách hàng",
         enableGlobalFilter: false,
         Cell: ({ cell, row }) => (
-          <a href={cell.getValue<string>()}>
+          <a href={`customer/${row.original.id}`}>
             <MuiLink
               target={
                 cell.getValue<string>().startsWith("http")
@@ -52,6 +52,7 @@ const CustomerTable = ({ onlyProps, rows }: Props) => {
             </MuiLink>
           </a>
         ),
+
         size: 100,
       },
       {

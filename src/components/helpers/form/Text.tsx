@@ -1,31 +1,30 @@
-import { UseFormRegister } from "react-hook-form";
-import { WrapperComponent } from "src/ts/type/common";
-import { IField, IFormValues } from "./shared/form.interface";
-
-interface Props extends WrapperComponent {
+import * as React from "react";
+import { Path, UseFormRegister, FieldValues } from "react-hook-form";
+import { IField } from "./shared/form.interface";
+interface Props<T> {
   field: IField;
-  register?: UseFormRegister<IFormValues>;
+  register?: UseFormRegister<T & FieldValues>;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
-const TextField = ({ field, register, onChange }: Props) => {
-  const { label, type, placeholder, fieldName } = field;
-  const _register = register && { ...register(fieldName as keyof IFormValues) };
+
+export default function TextField<T>({ field, register, ...rest }: Props<T>) {
+  const _register =
+    register && register(field.fieldName as Path<T & FieldValues>);
   return (
-    <div className="relative w-full mb-3" key={label}>
+    <div className="relative w-full mb-3">
       <label
         className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
         htmlFor="grid-password"
       >
-        {label}
+        {field.label}
       </label>
       <input
-        onChange={onChange}
-        type={type}
+        type={field.type}
         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-        placeholder={placeholder}
+        placeholder={field.placeholder}
         {..._register}
+        {...rest}
       />
     </div>
   );
-};
-export default TextField;
+}

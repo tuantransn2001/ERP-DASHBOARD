@@ -1,11 +1,12 @@
-import { UseFormRegister } from "react-hook-form";
-import { IField, IFormValues } from "./shared/form.interface";
+import { UseFormRegister, FieldValues, Path } from "react-hook-form";
 
-interface Props {
+import { IField } from "./shared/form.interface";
+
+interface Props<T> {
   field: IField;
-  register: UseFormRegister<IFormValues>;
+  register: UseFormRegister<T & FieldValues>;
 }
-const SelectField = ({ field, register }: Props) => {
+export default function SelectField<T>({ field, register }: Props<T>) {
   const { label, fieldName, options } = field;
   return (
     <div className="relative w-full mb-3" key={label}>
@@ -16,7 +17,7 @@ const SelectField = ({ field, register }: Props) => {
         {label}
       </label>
       <select
-        {...register(fieldName as keyof IFormValues)}
+        {...register(fieldName as Path<T & FieldValues>)}
         className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
       >
         {options?.map((o) => (
@@ -25,5 +26,4 @@ const SelectField = ({ field, register }: Props) => {
       </select>
     </div>
   );
-};
-export default SelectField;
+}

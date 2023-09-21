@@ -1,4 +1,9 @@
-import { PaginationPayload } from "../common/common";
+import {
+  IJunctionTag,
+  IUser,
+  IUserAddress,
+  PaginationPayload,
+} from "../common/common";
 
 export interface GetAllCustomerPayload extends PaginationPayload {}
 export interface ICustomer {
@@ -12,6 +17,20 @@ export interface ICustomer {
     id: string;
     status: string;
     createdAt: string;
+  };
+}
+
+export interface ICustomerDetail extends IUser {
+  UserAddresses: IUserAddress[];
+  CustSupp: {
+    id: string;
+    staff_in_charge_note: string;
+    status: string;
+    Staff: {
+      id: string;
+      User: Partial<IUser>;
+    };
+    CustSuppTags: IJunctionTag[];
   };
 }
 

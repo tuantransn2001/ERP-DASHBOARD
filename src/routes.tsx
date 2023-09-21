@@ -3,6 +3,7 @@ import LoginScreen from "./screens/auth/login";
 import DashboardScreen from "./screens/dashboard";
 import CustomerScreen from "./screens/customer";
 import CreateCustomerScreen from "./screens/customer/create";
+import CustomerDetailScreen from "./screens/customer/detail";
 
 export const routes: IRoute[] = [
   {
@@ -20,6 +21,10 @@ export const routes: IRoute[] = [
   {
     path: "app/dashboard/customer/create",
     element: <CreateCustomerScreen />,
+  },
+  {
+    path: "app/dashboard/customer/:id",
+    element: <CustomerDetailScreen />,
   },
 ];
 

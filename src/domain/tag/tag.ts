@@ -5,7 +5,7 @@ export interface ITag {
   id: string;
   tag_title: string;
   tag_description: string;
-  isDelete: string;
-  createdAt: string;
-  updatedAt: string;
+  isDelete?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }

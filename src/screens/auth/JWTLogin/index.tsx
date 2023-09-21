@@ -12,10 +12,9 @@ import { AxiosError } from "axios";
 import { handleToastOnServerError } from "src/services/httpService/helpers";
 import { useNavigate } from "react-router-dom";
 import * as React from "react";
-import { useForm } from "react-hook-form";
-import TextField from "src/components/helpers/form/Text";
-import { Button } from "@mui/material";
-import MyLoadingButton from "src/components/helpers/button";
+
+import MyForm from "src/components/helpers/form";
+import { ZodError } from "zod";
 
 const fields: IField[] = [
   {
@@ -41,55 +40,36 @@ const JWTLogin = () => {
     (state) => state.setStateOnLoginSuccess
   );
 
-  const { register, handleSubmit } = useForm<IFormValues>();
+  const handleOnSubmit = async ({ password, phone }: LoginPayload) => {
+    setIsLoading(true);
+    try {
+      const loginData: LoginPayload = {
+        password,
+        phone,
+      };
+      const loginResponse: HttpResponseSuccess<LoginResponse> = await loginApi(
+        loginData
+      );
 
-  const handleEnableIsLoading = () => setIsLoading(true);
-  const handleDisableIsLoading = () => setIsLoading(false);
-
-  const handleOnSubmit = React.useCallback(
-    async ({ password, phone }: LoginPayload) => {
-      handleEnableIsLoading();
-      try {
-        const loginData: LoginPayload = {
-          password,
-          phone,
-        };
-        const loginResponse: HttpResponseSuccess<LoginResponse> =
-          await loginApi(loginData);
-        const access_token: string = loginResponse.data.data.access_token;
-        const data: SetStateOnLoginSuccessPayload = { access_token };
-        localStorage.setItem("token", `Bearer ${access_token}`);
-        setStateOnLoginSuccess(data);
-        navigate("/app/dashboard/customers");
-        handleDisableIsLoading();
-      } catch (err) {
-        if (err instanceof AxiosError)
-          handleToastOnServerError(err, "Try again", () => {
-            console.log("action on fail");
-          });
-      }
-      handleDisableIsLoading();
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
-  );
+      const access_token: string = loginResponse.data.data.access_token;
+      const data: SetStateOnLoginSuccessPayload = { access_token };
+      localStorage.setItem("token", `Bearer ${access_token}`);
+      setStateOnLoginSuccess(data);
+      navigate("/app/dashboard/customers");
+    } catch (err) {
+      handleToastOnServerError(err as AxiosError | ZodError, "Try again");
+    }
+    setIsLoading(false);
+  };
 
   return (
     <>
       <ToastContainer />
-      <form onSubmit={handleSubmit(handleOnSubmit)}>
-        {fields.map((field, i) => (
-          <TextField field={field} register={register} key={i} />
-        ))}
-
-        {isLoading ? (
-          <MyLoadingButton />
-        ) : (
-          <Button type="submit" variant="contained" fullWidth>
-            login
-          </Button>
-        )}
-      </form>
+      <MyForm<IFormValues>
+        isLoading={isLoading}
+        fields={fields}
+        handleOnSubmit={handleOnSubmit}
+      />
     </>
   );
 };

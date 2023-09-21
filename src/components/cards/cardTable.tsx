@@ -1,5 +1,12 @@
-import TableDropdown from "../dropdowns/tableDropdown";
-// components
+import bootstrap from "Assets/images/common/bootstrap.jpg";
+import team1 from "Assets/images/common/team-1-800x800.jpg";
+import team2 from "Assets/images/common/team-2-800x800.jpg";
+import team3 from "Assets/images/common/team-3-800x800.jpg";
+import team4 from "Assets/images/common/team-4-800x800.jpg";
+import angular from "Assets/images/common/angular.jpg";
+import sketch from "Assets/images/common/sketch.jpg";
+import react from "Assets/images/common/react.jpg";
+import vue from "Assets/images/common/vue.jpg";
 
 interface Props {
   color: string;
@@ -14,7 +21,7 @@ export default function CardTable({ color }: Props) {
           (color === "light" ? "bg-white" : "bg-lightBlue-900 text-white")
         }
       >
-        <div className="rounded-t mb-0 px-4 py-3 border-0">
+        <div className="rounded-t mb-0 px-4 py-4 border-0">
           <div className="flex flex-wrap items-center">
             <div className="relative w-full px-4 max-w-full flex-grow flex-1">
               <h3
@@ -97,7 +104,7 @@ export default function CardTable({ color }: Props) {
               <tr>
                 <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                   <img
-                    src={require("Assets/images/common/bootstrap.jpg").default}
+                    src={bootstrap}
                     className="h-12 w-12 bg-white rounded-full border"
                     alt="..."
                   ></img>{" "}
@@ -119,34 +126,22 @@ export default function CardTable({ color }: Props) {
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                   <div className="flex">
                     <img
-                      src={
-                        require("Assets/images/common/team-1-800x800.jpg")
-                          .default
-                      }
+                      src={team1}
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow"
                     ></img>
                     <img
-                      src={
-                        require("Assets/images/common/team-2-800x800.jpg")
-                          .default
-                      }
+                      src={team2}
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
                     ></img>
                     <img
-                      src={
-                        require("Assets/images/common/team-3-800x800.jpg")
-                          .default
-                      }
+                      src={team3}
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
                     ></img>
                     <img
-                      src={
-                        require("Assets/images/common/team-4-470x470.png")
-                          .default
-                      }
+                      src={team4}
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
                     ></img>
@@ -165,14 +160,11 @@ export default function CardTable({ color }: Props) {
                     </div>
                   </div>
                 </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-                  <TableDropdown />
-                </td>
               </tr>
               <tr>
                 <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                   <img
-                    src={require("Assets/images/common/angular.jpg").default}
+                    src={angular}
                     className="h-12 w-12 bg-white rounded-full border"
                     alt="..."
                   ></img>{" "}
@@ -195,34 +187,22 @@ export default function CardTable({ color }: Props) {
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                   <div className="flex">
                     <img
-                      src={
-                        require("Assets/images/common/team-1-800x800.jpg")
-                          .default
-                      }
+                      src={team1}
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow"
                     ></img>
                     <img
-                      src={
-                        require("Assets/images/common/team-2-800x800.jpg")
-                          .default
-                      }
+                      src={team2}
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
                     ></img>
                     <img
-                      src={
-                        require("Assets/images/common/team-3-800x800.jpg")
-                          .default
-                      }
+                      src={team3}
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
                     ></img>
                     <img
-                      src={
-                        require("Assets/images/common/team-4-470x470.png")
-                          .default
-                      }
+                      src={team4}
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
                     ></img>
@@ -241,14 +221,11 @@ export default function CardTable({ color }: Props) {
                     </div>
                   </div>
                 </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-                  <TableDropdown />
-                </td>
               </tr>
               <tr>
                 <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                   <img
-                    src={require("Assets/images/common/sketch.jpg").default}
+                    src={sketch}
                     className="h-12 w-12 bg-white rounded-full border"
                     alt="..."
                   ></img>{" "}
@@ -270,34 +247,22 @@ export default function CardTable({ color }: Props) {
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                   <div className="flex">
                     <img
-                      src={
-                        require("Assets/images/common/team-1-800x800.jpg")
-                          .default
-                      }
+                      src={team1}
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow"
                     ></img>
                     <img
-                      src={
-                        require("Assets/images/common/team-2-800x800.jpg")
-                          .default
-                      }
+                      src={team2}
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
                     ></img>
                     <img
-                      src={
-                        require("Assets/images/common/team-3-800x800.jpg")
-                          .default
-                      }
+                      src={team3}
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
                     ></img>
                     <img
-                      src={
-                        require("Assets/images/common/team-4-470x470.png")
-                          .default
-                      }
+                      src={team4}
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
                     ></img>
@@ -316,14 +281,11 @@ export default function CardTable({ color }: Props) {
                     </div>
                   </div>
                 </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-                  <TableDropdown />
-                </td>
               </tr>
               <tr>
                 <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                   <img
-                    src={require("Assets/images/common/react.jpg").default}
+                    src={react}
                     className="h-12 w-12 bg-white rounded-full border"
                     alt="..."
                   ></img>{" "}
@@ -346,34 +308,22 @@ export default function CardTable({ color }: Props) {
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                   <div className="flex">
                     <img
-                      src={
-                        require("Assets/images/common/team-1-800x800.jpg")
-                          .default
-                      }
+                      src={team1}
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow"
                     ></img>
                     <img
-                      src={
-                        require("Assets/images/common/team-2-800x800.jpg")
-                          .default
-                      }
+                      src={team2}
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
                     ></img>
                     <img
-                      src={
-                        require("Assets/images/common/team-3-800x800.jpg")
-                          .default
-                      }
+                      src={team3}
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
                     ></img>
                     <img
-                      src={
-                        require("Assets/images/common/team-4-470x470.png")
-                          .default
-                      }
+                      src={team4}
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
                     ></img>
@@ -392,14 +342,11 @@ export default function CardTable({ color }: Props) {
                     </div>
                   </div>
                 </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-                  <TableDropdown />
-                </td>
               </tr>
               <tr>
                 <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
                   <img
-                    src={require("Assets/images/common/vue.jpg").default}
+                    src={vue}
                     className="h-12 w-12 bg-white rounded-full border"
                     alt="..."
                   ></img>{" "}
@@ -422,34 +369,22 @@ export default function CardTable({ color }: Props) {
                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                   <div className="flex">
                     <img
-                      src={
-                        require("Assets/images/common/team-1-800x800.jpg")
-                          .default
-                      }
+                      src={team1}
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow"
                     ></img>
                     <img
-                      src={
-                        require("Assets/images/common/team-2-800x800.jpg")
-                          .default
-                      }
+                      src={team2}
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
                     ></img>
                     <img
-                      src={
-                        require("Assets/images/common/team-3-800x800.jpg")
-                          .default
-                      }
+                      src={team3}
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
                     ></img>
                     <img
-                      src={
-                        require("Assets/images/common/team-4-470x470.png")
-                          .default
-                      }
+                      src={team3}
                       alt="..."
                       className="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow -ml-4"
                     ></img>
@@ -467,9 +402,6 @@ export default function CardTable({ color }: Props) {
                       </div>
                     </div>
                   </div>
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-                  <TableDropdown />
                 </td>
               </tr>
             </tbody>

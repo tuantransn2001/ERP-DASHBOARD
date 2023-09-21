@@ -1,12 +1,12 @@
-import { ShimmerSimpleGallery } from "react-shimmer-effects";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 const LoadingComponent = () => {
   return (
-    <>
-      <ShimmerSimpleGallery imageType="circular" imageHeight={2} caption />
-      <ShimmerSimpleGallery card imageHeight={3} />
-      <ShimmerSimpleGallery card imageHeight={3} caption />
-    </>
+    <SkeletonTheme baseColor="#202020" highlightColor="#444">
+      <p>
+        <Skeleton count={3} />
+      </p>
+    </SkeletonTheme>
   );
 };
 

@@ -13,11 +13,12 @@ interface Props<D> {
 
 export default function ProvinceSelect<D>({ dataGetter }: Props<D>) {
   const [selectedProvince, setSelectedProvince] = React.useState<string>("");
-  const { data, isLoading } = useMyQuery({
+  const { data, isLoading } = useMyQuery<IProvince[]>({
     keyGroup: ["province"],
     apiCaller: getVietNamProvinceApi(3),
   });
-
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const provinces = data?.data as any;
   return isLoading ? (
     <LoadingComponent />
   ) : (
@@ -39,8 +40,10 @@ export default function ProvinceSelect<D>({ dataGetter }: Props<D>) {
           }}
           className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
         >
-          {data?.data.map((province: IProvince) => (
-            <option value={province.name}>{province.name}</option>
+          {provinces.map((province: IProvince, i: number) => (
+            <option value={province.name} key={i}>
+              {province.name}
+            </option>
           ))}
         </select>
       </div>
@@ -61,10 +64,12 @@ export default function ProvinceSelect<D>({ dataGetter }: Props<D>) {
           className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
         >
           {selectedProvince ? (
-            data?.data
+            provinces
               .find((province: IProvince) => province.name === selectedProvince)
-              .districts.map((district: IDistrict) => (
-                <option value={district.name}>{district.name}</option>
+              .districts.map((district: IDistrict, i: number) => (
+                <option value={district.name} key={i}>
+                  {district.name}
+                </option>
               ))
           ) : (
             <option value="empty">Chọn Quận/Huyện</option>

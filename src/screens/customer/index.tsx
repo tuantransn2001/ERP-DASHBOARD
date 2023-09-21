@@ -5,20 +5,20 @@ import { getAllCustomerApi } from "src/apis/customer/customer";
 import { GetAllCustomerPayload } from "src/domain/customer/customer";
 import LoadingComponent from "src/components/helpers/shimmerLoader";
 import CustomerTable from "src/screens/customer/table";
+import ErrorScreen from "../error";
 
 const CustomerScreen = () => {
   const getAllCustomerData: GetAllCustomerPayload = {
     page_number: 1,
     page_size: 10,
   };
-  const { data, isLoading, isError, error } = useMyQuery({
+  const { data, isLoading, isError } = useMyQuery({
     keyGroup: ["customer"],
     apiCaller: getAllCustomerApi(getAllCustomerData),
   });
 
   if (isError) {
-    console.log({ error });
-    return <div>handle error</div>;
+    return <ErrorScreen errorCode={500} />;
   }
 
   return (

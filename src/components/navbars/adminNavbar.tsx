@@ -1,5 +1,3 @@
-import UserDropdown from "../dropdowns/userDropdown";
-
 export default function AdminNavbar() {
   return (
     <>
@@ -29,9 +27,6 @@ export default function AdminNavbar() {
             </div>
           </form>
           {/* User */}
-          <ul className="flex-col md:flex-row list-none items-center hidden md:flex">
-            <UserDropdown />
-          </ul>
         </div>
       </nav>
       {/* End Navbar */}

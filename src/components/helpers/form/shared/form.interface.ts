@@ -1,5 +1,4 @@
-import { LoginPayload } from "src/domain/auth/auth";
-import { CreateCustomerPayload } from "src/domain/customer/customer";
+import { ObjectLiteral } from "src/ts/type/common";
 
 export enum FIELD_TYPE {
   text = "text",
@@ -20,7 +19,6 @@ export interface IField {
   options?: IOption[];
 }
 
-type OnSubmitArg = LoginPayload;
+type OnSubmitArg = ObjectLiteral<string | never>;
 type R = Promise<void> | void;
 export type OnSubmit = (p: OnSubmitArg) => R;
-export type IFormValues = LoginPayload | CreateCustomerPayload;
