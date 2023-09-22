@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import FooterAdmin from "src/components/footers/footerAdmin";
 import AdminNavbar from "src/components/navbars/adminNavbar";
 import Sidebar from "src/components/sidebar";
@@ -15,7 +15,7 @@ export default function AdminLayout({ children }: Props) {
       <Grid item xs={10}>
         <div className="relative bg-blueGray-100">
           <AdminNavbar />
-          {children}
+          <Box className="md:px-10 px-4">{children}</Box>
           <FooterAdmin />
         </div>
       </Grid>

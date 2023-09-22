@@ -13,6 +13,7 @@ import {
   faCircleDot,
   faGear,
 } from "@fortawesome/free-solid-svg-icons";
+import SettingScreen from "./screens/setting";
 
 export const routes: IRoute[] = [
   {
@@ -34,6 +35,10 @@ export const routes: IRoute[] = [
   {
     path: "app/dashboard/customer/:id",
     element: <CustomerDetailScreen />,
+  },
+  {
+    path: "app/dashboard/setting/",
+    element: <SettingScreen />,
   },
 ];
 
@@ -125,7 +130,6 @@ export const sideBarMenu: ISideBarMenu[] = [
       {
         id: "customers",
         title: "Khách hàng",
-
         elemBefore: () => <FontAwesomeIcon icon={faCircleDot} />,
         itemId: "/app/customers",
       },
