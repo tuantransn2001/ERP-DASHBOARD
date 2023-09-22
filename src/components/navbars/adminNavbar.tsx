@@ -1,4 +1,6 @@
-export default function AdminNavbar() {
+import { UseSelect } from "../helpers/dropDown";
+
+const AdminNavbar = () => {
   return (
     <>
       <div className="h-20"></div>
@@ -13,6 +15,8 @@ export default function AdminNavbar() {
           >
             Dashboard
           </a>
+
+          <UseSelect />
           {/* Form */}
           <form className="md:flex hidden flex-row flex-wrap items-center lg:ml-auto mr-3">
             <div className="relative flex w-full flex-wrap items-stretch">
@@ -32,4 +36,6 @@ export default function AdminNavbar() {
       {/* End Navbar */}
     </>
   );
-}
+};
+
+export default AdminNavbar;

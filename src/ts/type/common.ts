@@ -11,16 +11,12 @@ export interface IRoute {
 }
 
 export type ISideBarMenu = {
-  id: string;
+  id?: string;
+  itemId?: string;
   title: string;
-  type: string;
-  icon?: string;
+  elemBefore?: unknown;
   url?: string;
-  badge?: {
-    title: string;
-    type: string;
-  };
-  children?: ISideBarMenu[];
+  subNav?: ISideBarMenu[];
 };
 
 export type ObjectLiteral<TValue> = Record<string, TValue>;

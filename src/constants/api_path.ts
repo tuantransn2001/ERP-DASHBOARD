@@ -14,4 +14,7 @@ export const API_PATH = {
   tag: {
     getAll: "tag/get-all",
   },
+  debt: {
+    getAll: "debt/get-change-logs",
+  },
 };

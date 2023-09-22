@@ -36,6 +36,7 @@ export default {
         "screen-75": "75vh",
       },
       fontSize: {
+        10: "20rem",
         55: "55rem",
       },
       opacity: {

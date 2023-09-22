@@ -8,12 +8,12 @@ interface Props extends WrapperComponent {}
 
 export default function AdminLayout({ children }: Props) {
   return (
-    <Grid>
-      <Grid item xs={4}>
+    <Grid container>
+      <Grid item xs={2}>
         <Sidebar />
       </Grid>
-      <Grid item xs={8}>
-        <div className="relative md:ml-64 bg-blueGray-100">
+      <Grid item xs={10}>
+        <div className="relative bg-blueGray-100">
           <AdminNavbar />
           {children}
           <FooterAdmin />

@@ -4,6 +4,15 @@ import DashboardScreen from "./screens/dashboard";
 import CustomerScreen from "./screens/customer";
 import CreateCustomerScreen from "./screens/customer/create";
 import CustomerDetailScreen from "./screens/customer/detail";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faSackDollar,
+  faDatabase,
+  faBagShopping,
+  faListCheck,
+  faCircleDot,
+  faGear,
+} from "@fortawesome/free-solid-svg-icons";
 
 export const routes: IRoute[] = [
   {
@@ -32,130 +41,114 @@ export const sideBarMenu: ISideBarMenu[] = [
   {
     id: "dashboard",
     title: "Tổng quan",
-    type: "group",
-    children: [
+    itemId: "/app/dashboard",
+    elemBefore: () => <FontAwesomeIcon icon={faDatabase} />,
+    subNav: [
       {
         id: "dashboard-sell",
         title: "Bán hàng",
-        type: "item",
-        icon: "feather icon-database",
-        url: "/app/dashboard/sell",
-        badge: {
-          title: "Sắp ra mắt",
-          type: "label-primary",
-        },
+        elemBefore: () => <FontAwesomeIcon icon={faBagShopping} />,
+        itemId: "/app/dashboard/sell",
       },
       {
         id: "dashboard-crm",
         title: "CRM",
-        type: "item",
-        icon: "feather icon-life-buoy",
-        url: "/app/dashboard/crm",
-        badge: {
-          title: "Sắp ra mắt",
-          type: "label-primary",
-        },
+        elemBefore: () => <FontAwesomeIcon icon={faListCheck} />,
+
+        itemId: "/app/dashboard/crm",
       },
     ],
   },
   {
     id: "sell-management",
     title: "Quản lý bán hàng",
-    type: "group",
-    children: [
+    elemBefore: () => <FontAwesomeIcon icon={faSackDollar} />,
+    subNav: [
       {
         id: "orders",
         title: "Đơn hàng",
-        type: "collapse",
-        icon: "feather icon-clipboard",
-        children: [
+        itemId: "/app/orders",
+        elemBefore: () => <FontAwesomeIcon icon={faCircleDot} />,
+        subNav: [
           {
             id: "orders-create",
             title: "Tạo đơn và giao hàng",
-            type: "item",
-            url: "/app/orders/create",
+            itemId: "/app/orders/create",
           },
           {
             id: "orders-list",
             title: "Danh sách đơn hàng",
-            type: "item",
-            url: "/app/orders",
+            itemId: "/app/orders",
           },
         ],
       },
       {
         id: "deliveries",
         title: "Vận chuyển",
-        type: "collapse",
-        icon: "feather icon-truck",
-        children: [
+        elemBefore: () => <FontAwesomeIcon icon={faCircleDot} />,
+        subNav: [
           {
             id: "deliveries-list",
             title: "Danh sách đối tác",
-            type: "item",
-            url: "/app/deliveries",
+
+            itemId: "/app/deliveries",
           },
         ],
       },
       {
         id: "products",
         title: "Sản phẩm",
-        type: "collapse",
-        icon: "feather icon-box",
-        children: [
+
+        elemBefore: () => <FontAwesomeIcon icon={faCircleDot} />,
+        subNav: [
           {
             id: "product-list",
             title: "Danh sách sản phẩm",
-            type: "item",
-            url: "/app/products",
+
+            itemId: "/app/products",
           },
 
           {
             id: "product-purchase-orders",
             title: "Nhập hàng",
-            type: "item",
-            url: "/app/purchase_orders",
+
+            itemId: "/app/purchase_orders",
           },
           {
             id: "product-suppliers",
             title: "Nhà cung cấp",
-            type: "item",
-            url: "/app/suppliers",
+
+            itemId: "/app/suppliers",
           },
         ],
       },
       {
         id: "customers",
         title: "Khách hàng",
-        type: "item",
-        icon: "feather icon-user",
-        url: "/app/customers",
+
+        elemBefore: () => <FontAwesomeIcon icon={faCircleDot} />,
+        itemId: "/app/customers",
       },
     ],
   },
   {
     id: "advance",
     title: "Nâng cao",
-    type: "group",
-    icon: "icon-ui",
-    children: [
+
+    elemBefore: () => <FontAwesomeIcon icon={faGear} />,
+    subNav: [
       {
         id: "applications",
         title: "Ứng dụng",
-        type: "item",
-        icon: "feather icon-grid",
-        url: "/app/applications",
-        badge: {
-          title: "Sắp ra mắt",
-          type: "label-primary",
-        },
+
+        elemBefore: () => <FontAwesomeIcon icon={faCircleDot} />,
+        itemId: "/app/applications",
       },
       {
         id: "configurations",
         title: "Cấu hình",
-        type: "item",
-        icon: "feather icon-settings",
-        url: "/app/configurations",
+        elemBefore: () => <FontAwesomeIcon icon={faCircleDot} />,
+        itemId: "/app/configurations",
       },
     ],
   },

@@ -1,3 +1,4 @@
+import * as React from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import MyButton from "../button";
 import { FIELD_TYPE, IField } from "./shared/form.interface";
@@ -10,6 +11,7 @@ interface Props<TFormValues> {
 }
 
 export default function MyForm<TFormValues>({
+  ref,
   fields,
   handleOnSubmit,
   isLoading,
@@ -30,7 +32,9 @@ export default function MyForm<TFormValues>({
         }
       })}
 
-      <MyButton isLoading={isLoading}>Submit</MyButton>
+      <MyButton ref={ref} isLoading={isLoading}>
+        Submit
+      </MyButton>
     </form>
   );
 }
