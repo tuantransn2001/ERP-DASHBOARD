@@ -1,6 +1,10 @@
 import { z } from "zod";
 import { BulkCreateAddressSchema } from "../../address/shared/address.schema";
-import { StringArrayType, StringType } from "../../common/common.schema";
+import {
+  StringArrayType,
+  StringType,
+  UUIDType,
+} from "../../common/common.schema";
 
 export const CreateCustomerSchema = z.object({
   user_name: StringType,
@@ -11,3 +15,9 @@ export const CreateCustomerSchema = z.object({
   tags: StringArrayType,
   address_list: BulkCreateAddressSchema,
 });
+
+export const UpdateCustomerSchema = CreateCustomerSchema.merge(
+  z.object({
+    id: UUIDType,
+  })
+).partial();

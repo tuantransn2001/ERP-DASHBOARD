@@ -170,7 +170,7 @@ function renderSelectedValue(
 ) {
   const selectedOption = options.find((option) => option.value === value);
 
-  return selectedOption ? `${selectedOption.label} (${value})` : null;
+  return selectedOption ? `${selectedOption.label}` : null;
 }
 
 function CustomOption(props: OptionProps) {

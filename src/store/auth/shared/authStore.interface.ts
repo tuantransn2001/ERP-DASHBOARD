@@ -1,7 +1,3 @@
-export interface SetStateOnLoginSuccessPayload {
-  access_token: string;
-}
-
 export interface AuthState {
   isLoggedIn: boolean;
   isGettingMe: boolean;
@@ -9,4 +5,8 @@ export interface AuthState {
   token: string;
   isLoading: false;
   setStateOnLoginSuccess: (payload: SetStateOnLoginSuccessPayload) => void;
+}
+export interface SetStateOnLoginSuccessPayload
+  extends Partial<Omit<AuthState, "setStateOnLoginSuccess">> {
+  access_token: string;
 }

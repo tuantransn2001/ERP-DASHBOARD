@@ -52,7 +52,11 @@ const JWTLogin = () => {
       );
 
       const access_token: string = loginResponse.data.data.access_token;
-      const data: SetStateOnLoginSuccessPayload = { access_token };
+      const data: SetStateOnLoginSuccessPayload = {
+        access_token,
+        isGettingMe: false,
+        isLoggedIn: true,
+      };
       localStorage.setItem("token", `Bearer ${access_token}`);
       setStateOnLoginSuccess(data);
       navigate("/app/dashboard/customers");

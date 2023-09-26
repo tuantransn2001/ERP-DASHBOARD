@@ -1,6 +1,7 @@
 import * as React from "react";
 import {
   MaterialReactTable,
+  MRT_RowSelectionState,
   type MRT_ColumnDef,
   type MRT_Row,
 } from "material-react-table";
@@ -12,13 +13,22 @@ import {
 } from "@mui/material";
 import { ICustomer } from "src/domain/customer/customer";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { useNavigate } from "react-router-dom";
+import { multipleDeleteCustomerApi } from "src/apis/customer/customer";
+import toast from "src/helpers/toast/toast";
+import { ToastContainer } from "react-toastify";
+
 interface Props {
   onlyProps?: Set<keyof MRT_Row>;
   rows: ICustomer[];
 }
 
 const CustomerTable = ({ onlyProps, rows }: Props) => {
+  const [rowSelection, setRowSelection] = React.useState<MRT_RowSelectionState>(
+    {}
+  );
+
   const navigate = useNavigate();
   const isDesktop = useMediaQuery("(min-width: 1200px)");
 
@@ -138,8 +148,47 @@ const CustomerTable = ({ onlyProps, rows }: Props) => {
     return rows;
   }, [rows]);
 
+  const handleDeleteCustomer = React.useCallback(async () => {
+    try {
+      const selectedIndexList = Object.keys(rowSelection).reduce(
+        (ids: string[], index: string) => {
+          const selectedCustomer = rows[+index];
+
+          ids.push(selectedCustomer?.id);
+
+          return ids;
+        },
+        []
+      );
+
+      const { status } = await multipleDeleteCustomerApi(selectedIndexList);
+
+      if (status === 200) {
+        toast.success({
+          title: "Customer deleted successfully!!",
+          action: {
+            text: "reload",
+            onClick: () => {
+              window.location.reload();
+            },
+          },
+        });
+      } else {
+        toast.error({
+          title: "Customer deleted fail!!",
+          action: {
+            text: "retry",
+          },
+        });
+      }
+    } catch (err) {
+      console.log("handleDeleteCustomer", err);
+    }
+  }, [rowSelection, rows]);
+
   return (
     <>
+      <ToastContainer />
       <Button
         component="label"
         variant="contained"
@@ -147,6 +196,15 @@ const CustomerTable = ({ onlyProps, rows }: Props) => {
         onClick={() => navigate("/app/dashboard/customer/create")}
       >
         Thêm khách hàng
+      </Button>
+      <Button
+        component="label"
+        variant="outlined"
+        color="error"
+        startIcon={<DeleteIcon />}
+        onClick={handleDeleteCustomer}
+      >
+        Xóa khách hàng
       </Button>
       <MaterialReactTable
         columns={columns}
@@ -198,7 +256,8 @@ const CustomerTable = ({ onlyProps, rows }: Props) => {
           </Typography>
         )}
         onColumnPinningChange={setColumnPinning}
-        state={{ columnPinning }}
+        onRowSelectionChange={setRowSelection}
+        state={{ columnPinning, rowSelection }}
       />
     </>
   );

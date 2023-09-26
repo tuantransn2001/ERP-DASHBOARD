@@ -1,6 +1,6 @@
-import * as React from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import MyButton from "../button";
+import SelectField from "./Select";
 import { FIELD_TYPE, IField } from "./shared/form.interface";
 import TextField from "./Text";
 
@@ -11,7 +11,6 @@ interface Props<TFormValues> {
 }
 
 export default function MyForm<TFormValues>({
-  ref,
   fields,
   handleOnSubmit,
   isLoading,
@@ -26,15 +25,16 @@ export default function MyForm<TFormValues>({
           case FIELD_TYPE.password: {
             return <TextField field={field} register={register} key={i} />;
           }
+          case FIELD_TYPE.select: {
+            return <SelectField field={field} register={register} key={i} />;
+          }
           default: {
             return <TextField field={field} register={register} key={i} />;
           }
         }
       })}
 
-      <MyButton ref={ref} isLoading={isLoading}>
-        Submit
-      </MyButton>
+      <MyButton isLoading={isLoading}>Submit</MyButton>
     </form>
   );
 }

@@ -8,8 +8,8 @@ interface Props {
 }
 
 const renderRoute = (route: IRoute[]) =>
-  route.map((route, index) => (
-    <Route key={index} path={route.path} element={route.element} />
+  route.map(({ path, element }, index) => (
+    <Route key={index} path={path} element={element} />
   ));
 
 const RouterProvider = ({ routes }: Props) => {

@@ -8,10 +8,12 @@ export const useAuthStore = create<AuthState>()((set) => ({
   token: "",
   isLoading: false,
   setStateOnLoginSuccess: (payload) => {
-    return set((state) => ({
-      token: payload.access_token,
-      isGettingMe: !state.isGettingMe,
-      isLoggedIn: !state.isLoggedIn,
+    return set(() => ({
+      ...{
+        token: payload.access_token,
+        isGettingMe: payload.isGettingMe,
+        isLoggedIn: payload.isLoggedIn,
+      },
     }));
   },
 }));

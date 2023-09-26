@@ -7,6 +7,7 @@ export interface WrapperComponent {
 export interface IRoute {
   path?: string;
   element?: JSX.Element;
+  Guard?: React.ElementType;
   routes?: IRoute[];
 }
 
@@ -22,3 +23,5 @@ export type ISideBarMenu = {
 export type ObjectLiteral<TValue> = Record<string, TValue>;
 
 export type SetState<T> = React.Dispatch<React.SetStateAction<T>>;
+
+export type Falsy = false | 0 | "" | null | undefined;

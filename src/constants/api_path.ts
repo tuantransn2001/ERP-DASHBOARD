@@ -7,6 +7,8 @@ export const API_PATH = {
     getAll: "customer/get-all",
     create: "customer/create",
     getById: "customer/get-by-id",
+    patchById: "customer/update-personalInfo-by-id", // ? update by staff id
+    multipleDelete: "customer/delete-multiple", // ? update by user id
   },
   staff: {
     getAll: "staff/get-all",
@@ -16,5 +18,8 @@ export const API_PATH = {
   },
   debt: {
     getAll: "debt/get-change-logs",
+  },
+  branch: {
+    getAll: "agency-branch/get-all",
   },
 };

@@ -1,6 +1,35 @@
-import { UseSelect } from "../helpers/dropDown";
+import { getAllBranchApi } from "src/apis/branch/branch";
+import { GetAllBranchPayload, IBranch } from "src/domain/branch/branch";
+import { useMyQuery } from "src/hooks/useQuery";
+import MySelect from "../helpers/dropDown";
+import LoadingComponent from "../helpers/shimmerLoader";
+import ErrorScreen from "src/screens/error";
+import { AxiosError } from "axios";
 
 const AdminNavbar = () => {
+  const getAllBranchData: GetAllBranchPayload = {
+    page_number: 1,
+    page_size: 3,
+  };
+  const { data, isLoading, isError, error } = useMyQuery<IBranch[]>({
+    keyGroup: ["branches"],
+    apiCaller: getAllBranchApi(getAllBranchData),
+  });
+
+  if (isLoading) return <LoadingComponent />;
+
+  if (isError) {
+    const err = error as AxiosError;
+    return <ErrorScreen errorCode={Number(err.response?.status)} />;
+  }
+
+  const branches = data?.data?.data as IBranch[];
+
+  const options = branches.map((branch) => ({
+    value: branch.id,
+    label: branch.agency_branch_name,
+    disable: branch.isDelete,
+  }));
   return (
     <>
       <div className="h-20"></div>
@@ -16,7 +45,7 @@ const AdminNavbar = () => {
             Dashboard
           </a>
 
-          <UseSelect />
+          <MySelect options={options} placeholder={"Chọn chi nhánh"} />
           {/* Form */}
           <form className="md:flex hidden flex-row flex-wrap items-center lg:ml-auto mr-3">
             <div className="relative flex w-full flex-wrap items-stretch">

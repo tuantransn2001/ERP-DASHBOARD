@@ -17,6 +17,7 @@ export const useMyQuery = <T>({ keyGroup, apiCaller }: QueryPayload<T>) => {
     error,
     isFetching,
     isLoadingError,
+    refetch,
   } = useQuery(keyGroup, () => apiCaller);
 
   const responseData = data as HttpResponseSuccess<T>;
@@ -30,5 +31,6 @@ export const useMyQuery = <T>({ keyGroup, apiCaller }: QueryPayload<T>) => {
     error,
     isFetching,
     isLoadingError,
+    refetch,
   };
 };
