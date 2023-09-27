@@ -10,14 +10,15 @@ interface Props extends WrapperComponent {}
 export default function AdminLayout({ children }: Props) {
   return (
     <AuthGuard>
-      <Grid container>
+      <Grid container className="min-h-screen max-w-screen">
         <Grid item xs={2}>
           <Sidebar />
         </Grid>
         <Grid item xs={10}>
-          <div className="relative bg-blueGray-100">
+          <div className="relative w-full px-12 min-h-screen bg-blueGray-100">
             <AdminNavbar />
-            <Box className="md:px-10 px-4">{children}</Box>
+
+            <Box>{children}</Box>
             <FooterAdmin />
           </div>
         </Grid>

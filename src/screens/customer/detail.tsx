@@ -83,7 +83,7 @@ const CustomerDetailScreen = () => {
       ) : (
         <AdminLayout>
           <ToastContainer />
-          <Box className="md:px-10 px-4" sx={{ maxWidth: "100%" }}>
+          <Box className="px-4" sx={{ maxWidth: "100%" }}>
             <Box className="mb-3 flex justify-between">
               <Box>
                 <Typography>{customer.user_name}</Typography>

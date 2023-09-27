@@ -1,0 +1,23 @@
+$neutral30: "#EBECF0";
+$neutral900: "#091E42";
+
+.myModal {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  z-index: 50;
+  padding: 1rem;
+  width: 50%;
+  max-height: 20rem;
+  height: 100%;
+  background-color: $neutral900;
+  display: none;
+  @media (min-width: 768px) {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  &.isVisible {
+    display: fixed;
+  }
+}

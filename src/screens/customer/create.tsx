@@ -128,7 +128,7 @@ const CreateCustomerScreen = () => {
     <>
       <ToastContainer />
       <AdminLayout>
-        <div className="md:px-10 px-4">
+        <div className="px-4">
           <form onSubmit={handleSubmit(handleOnSubmit)}>
             {fields.map((field, i) => {
               switch (field.type) {

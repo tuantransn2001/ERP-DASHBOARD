@@ -29,7 +29,6 @@ export default {
     },
     colors: {
       ...colors,
-      primary: "#333333",
     },
     extend: {
       minHeight: {

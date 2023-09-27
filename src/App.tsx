@@ -10,7 +10,7 @@ const App = () => {
   return (
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
-        <RouterProvider routes={routes} />;
+        <RouterProvider routes={routes} />
       </QueryClientProvider>
     </HelmetProvider>
   );

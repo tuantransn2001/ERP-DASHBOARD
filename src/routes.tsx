@@ -13,7 +13,8 @@ import {
   faCircleDot,
   faGear,
 } from "@fortawesome/free-solid-svg-icons";
-import SettingScreen from "./screens/setting";
+import ConfigurationsScreen from "./screens/configurations";
+import AgencyBranchScreen from "./screens/branchs";
 
 export const routes: IRoute[] = [
   {
@@ -37,8 +38,12 @@ export const routes: IRoute[] = [
     element: <CustomerDetailScreen />,
   },
   {
-    path: "app/dashboard/setting/",
-    element: <SettingScreen />,
+    path: "app/dashboard/configurations",
+    element: <ConfigurationsScreen />,
+  },
+  {
+    path: "app/dashboard/agency-branch",
+    element: <AgencyBranchScreen />,
   },
 ];
 
@@ -72,18 +77,18 @@ export const sideBarMenu: ISideBarMenu[] = [
       {
         id: "orders",
         title: "Đơn hàng",
-        itemId: "/app/orders",
+        itemId: "/app/dashboard/orders",
         elemBefore: () => <FontAwesomeIcon icon={faCircleDot} />,
         subNav: [
           {
             id: "orders-create",
             title: "Tạo đơn và giao hàng",
-            itemId: "/app/orders/create",
+            itemId: "/app/dashboard/orders/create",
           },
           {
             id: "orders-list",
             title: "Danh sách đơn hàng",
-            itemId: "/app/orders",
+            itemId: "/app/dashboard/orders",
           },
         ],
       },
@@ -96,7 +101,7 @@ export const sideBarMenu: ISideBarMenu[] = [
             id: "deliveries-list",
             title: "Danh sách đối tác",
 
-            itemId: "/app/deliveries",
+            itemId: "/app/dashboard/deliveries",
           },
         ],
       },
@@ -110,20 +115,20 @@ export const sideBarMenu: ISideBarMenu[] = [
             id: "product-list",
             title: "Danh sách sản phẩm",
 
-            itemId: "/app/products",
+            itemId: "/app/dashboard/products",
           },
 
           {
             id: "product-purchase-orders",
             title: "Nhập hàng",
 
-            itemId: "/app/purchase_orders",
+            itemId: "/app/dashboard/purchase_orders",
           },
           {
             id: "product-suppliers",
             title: "Nhà cung cấp",
 
-            itemId: "/app/suppliers",
+            itemId: "/app/dashboard/suppliers",
           },
         ],
       },
@@ -131,7 +136,7 @@ export const sideBarMenu: ISideBarMenu[] = [
         id: "customers",
         title: "Khách hàng",
         elemBefore: () => <FontAwesomeIcon icon={faCircleDot} />,
-        itemId: "/app/customers",
+        itemId: "/app/dashboard/customers",
       },
     ],
   },
@@ -146,13 +151,13 @@ export const sideBarMenu: ISideBarMenu[] = [
         title: "Ứng dụng",
 
         elemBefore: () => <FontAwesomeIcon icon={faCircleDot} />,
-        itemId: "/app/applications",
+        itemId: "/app/dashboard/applications",
       },
       {
         id: "configurations",
         title: "Cấu hình",
         elemBefore: () => <FontAwesomeIcon icon={faCircleDot} />,
-        itemId: "/app/configurations",
+        itemId: "/app/dashboard/configurations",
       },
     ],
   },

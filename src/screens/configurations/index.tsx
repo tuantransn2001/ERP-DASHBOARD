@@ -12,13 +12,13 @@ import {
   faMoneyBill,
 } from "@fortawesome/free-solid-svg-icons";
 
-interface ISetting {
+interface IConfiguration {
   icon: IconDefinition;
   title: string;
   description: string;
 }
 
-const settings: ISetting[] = [
+const configurations: IConfiguration[] = [
   {
     icon: faMapLocationDot,
     title: "Cấu hình chi nhánh",
@@ -36,11 +36,11 @@ const settings: ISetting[] = [
   },
 ];
 
-const SettingScreen = () => {
+const ConfigurationsScreen = () => {
   return (
     <AdminLayout>
       <Grid container spacing={4}>
-        {settings.map(({ icon, title, description }) => (
+        {configurations.map(({ icon, title, description }) => (
           <Grid item xs={3}>
             <Box sx={{ minWidth: 150, minHeight: 114 }}>
               <Card className="h-full" variant="outlined">
@@ -71,4 +71,4 @@ const SettingScreen = () => {
     </AdminLayout>
   );
 };
-export default SettingScreen;
+export default ConfigurationsScreen;

@@ -3,10 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Typography } from "@mui/material";
 import { Navigation } from "react-minimal-side-navigation";
 import "react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { sideBarMenu } from "src/routes";
+import { ISideBarMenu } from "src/ts/type/common";
 
 const SideBar = () => {
+  const navigate = useNavigate();
   return (
     <>
       <Link
@@ -18,7 +20,7 @@ const SideBar = () => {
       </Link>
       <Navigation
         activeItemId="/management/members"
-        onSelect={() => {}}
+        onSelect={({ itemId }: ISideBarMenu) => navigate(`${itemId}`)}
         items={sideBarMenu}
       />
     </>

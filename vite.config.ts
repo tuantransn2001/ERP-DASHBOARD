@@ -15,4 +15,11 @@ export default defineConfig({
     exclude: ["js-big-decimal"],
   },
   plugins: [react(), tsconfigPaths()],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "./src/scss/global/globalStyle.scss";`,
+      },
+    },
+  },
 });
